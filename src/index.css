@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-cinzel {
+    font-family: 'Cinzel', Georgia, serif;
+  }
+  .font-cinzel-decorative {
+    font-family: 'Cinzel Decorative', Georgia, serif;
+  }
+  .font-rajdhani {
+    font-family: 'Rajdhani', sans-serif;
+  }
+  .font-outfit {
+    font-family: 'Outfit', -apple-system, sans-serif;
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(180deg, #FFF1A8 0%, #ECC557 38%, #C89A29 68%, #FAD77B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gold-gradient-text-subtle {
+    background: linear-gradient(180deg, #FDE68A 0%, #D4AF37 60%, #996515 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gold-glow {
+    text-shadow: 0 0 16px rgba(234, 179, 8, 0.4), 0 0 32px rgba(202, 138, 4, 0.2);
+  }
+
+  .gold-box-glow {
+    box-shadow: 0 0 20px -3px rgba(212, 175, 55, 0.25), inset 0 0 12px rgba(212, 175, 55, 0.08);
+  }
+
+  .gold-border {
+    border-color: rgba(212, 175, 55, 0.4);
+  }
+
+  .dark-luxury-bg {
+    background-color: #0c0b08;
+    background-image: 
+      radial-gradient(circle at 50% 25%, rgba(212, 175, 55, 0.09) 0%, transparent 60%),
+      linear-gradient(to right, rgba(212, 175, 55, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(212, 175, 55, 0.035) 1px, transparent 1px);
+    background-size: 100% 100%, 28px 28px, 28px 28px;
+  }
+}
+
+/* Hide scrollbar for clean applet view */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

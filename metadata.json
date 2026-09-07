@@ -1,0 +1,6 @@
+{
+  "name": "SHREEWIN SURESHOT PREDICTION",
+  "description": "Elite AI-powered colour and number prediction Telegram Mini App with automated profile sync, splash sequence, and Telegram bot hosting.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
