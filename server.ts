@@ -5,7 +5,7 @@ import { spawn, execSync } from 'child_process';
 import { createServer as createViteServer } from 'vite';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
 app.use(express.json());
 
@@ -13,7 +13,7 @@ const NEW_BOT_TOKEN = '8523488300:AAE1v7xXPfn-VnRmQN4toRD-IwSgxgyXUvc';
 const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_BOT_TOKEN !== '8992984672:AAHXTK-MwJxCY430owOzmAKWmot1KM5ClJU')
   ? process.env.TELEGRAM_BOT_TOKEN 
   : NEW_BOT_TOKEN;
-let activeAppUrl = process.env.APP_URL || 'https://ais-pre-sw47slwihfbhxyhd5evr5c-631580931537.asia-east1.run.app';
+let activeAppUrl = process.env.RENDER_EXTERNAL_URL || process.env.APP_URL || 'https://ais-pre-sw47slwihfbhxyhd5evr5c-631580931537.asia-east1.run.app';
 
 let botInfo: any = null;
 let isPollingActive = false;
@@ -359,8 +359,12 @@ async function startServer() {
 
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on http://localhost:${PORT}`);
-    // Start Cloudflare Tunnel
-    startCloudflareTunnel();
+    // Start Cloudflare Tunnel if not already on a public host like Render
+    if (!process.env.RENDER_EXTERNAL_URL) {
+      startCloudflareTunnel();
+    } else {
+      console.log('[Render Host] Using Render public domain:', activeAppUrl);
+    }
     // Start Bot
     initTelegramBot().catch((e) => console.error('Bot init error:', e));
   });
